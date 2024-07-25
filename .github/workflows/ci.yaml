@@ -40,7 +40,7 @@ jobs:
           poetry update
       - name: Run black
         run: |
-          poetry run black pylint_restricted_imports/ tests/
+          poetry run black --check pylint_restricted_imports/ tests/
       - name: Run pytest
         run: |
           poetry run pytest -v tests/
