@@ -5,6 +5,10 @@ on:
     branches:
       - master
   pull_request: ~
+  workflow_dispatch:
+  schedule:
+    # Every day, at 4:35 (arbitrary)
+    - cron: '35 4 * * *'
 
 jobs:
 
@@ -29,6 +33,11 @@ jobs:
         run: |
           python -m pip install -U pip poetry
           poetry install
+      # Only run with latest deps on schedule (nightly runs)
+      - name: Upgrade deps
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          poetry update
       - name: Run black
         run: |
           poetry run black pylint_restricted_imports/ tests/
