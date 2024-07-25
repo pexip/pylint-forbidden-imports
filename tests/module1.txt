@@ -1,0 +1,1 @@
+restricted-transitive-import:2:0:2:25::Importing module2 causes ftplib, a restricted module, to be imported:UNDEFINED

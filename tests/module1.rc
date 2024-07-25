@@ -1,0 +1,11 @@
+[MASTER]
+#disable=all
+load-plugins=pylint_restricted_imports
+
+[RESTRICTED-IMPORT]
+# Colon/semicolon-delimited sets of names that determine what modules are
+# allowed to be imported from another module
+restricted-imports=module1:ftplib
+
+# Check restricted imports recursively
+restricted-import-recurse=yes
