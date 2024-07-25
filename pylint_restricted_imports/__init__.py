@@ -98,12 +98,12 @@ class RestrictedImportChecker(BaseChecker):
         if isinstance(node, Import):
             try:
                 module = node.do_import_module(name)
-            except AstroidBuildingException:
+            except AstroidBuildingError:
                 return None
         elif node.modname:
             try:
                 module = node.do_import_module(f"{node.modname}.{name}")
-            except AstroidBuildingException:
+            except AstroidBuildingError:
                 pass
 
             if not module:
